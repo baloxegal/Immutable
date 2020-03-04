@@ -1,11 +1,11 @@
 
-final class Currency {
+final class Currency implements Cloneable {
     private String baseCode;
     private String code;
     private Float value;
     private String date;
 	
-    private Currency(String baseCode, String code, Float value, String date) {
+    public Currency(String baseCode, String code, Float value, String date) {
 		super();
 		this.baseCode = baseCode;
 		this.code = code;
@@ -53,8 +53,14 @@ final class Currency {
 	}
 
 	public Currency setDate(String date) throws CloneNotSupportedException {
-		Currency clone = (Currency) this.clone();
+		Currency clone = this.clone();
 		clone.date = date;
 		return clone;
+	}
+
+	@Override
+	protected Currency clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return (Currency) super.clone();
 	}
 }
